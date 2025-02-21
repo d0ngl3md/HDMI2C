@@ -55,6 +55,8 @@ echo "Setting up permissions for I2C devices..."
 sudo chown root:i2c /dev/i2c-* 2>/dev/null
 sudo chmod 660 /dev/i2c-* 2>/dev/null
 
+
+
 # Add Udev rule for persistent permissions
 UDEV_RULE_FILE="/etc/udev/rules.d/99-i2c.rules"
 echo "Checking for existing udev rule..."
@@ -65,5 +67,5 @@ if ! grep -q 'KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"' "$UDEV_RULE_FILE" 
 else
     echo "Udev rule already exists."
 fi
-
+newgrp i2c
 echo "I2C setup complete. You can use I2C devices now!"
