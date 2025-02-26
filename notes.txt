@@ -1,0 +1,11 @@
+Given the sheer number of possibilites, sensors, integrations,  theres unlimited possibilities.
+Current:
+i2c LCD, listening to computer audio, (I dont have any i2c ADCs to run a microphone, so computer audio is fine.)
+pip install pyaudio
+fails.
+sudo apt install portaudio19-dev
+then
+pip install pyaudio
+
+Success!
+
