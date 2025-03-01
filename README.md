@@ -15,5 +15,8 @@ LCD 16x4, i2c base addresses, 0x20 thru 0x27
 <br><br>
 I had been messing with this on a display port to HDMI addapter, and could not get it to work.
 When I switched over to a straight throught HDMI, it worked instantly!
+<br>
+sudo apt-install python3-dev
+pip install spidev
 
  
