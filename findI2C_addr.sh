@@ -13,5 +13,5 @@ n=$(i2cdetect -l | wc -l)
 # Loop through available I2C buses and search for the device
 for bus in $(seq 0 $((n-1))); do
     echo "Scanning i2c-$bus..."
-    sudo i2cdetect -y $bus | grep -E "$dev" && echo "Device found on i2c-$bus"
+    sudo i2cdetect -y -r $bus | grep -E "$dev" && echo "Device found on i2c-$bus"
 done
