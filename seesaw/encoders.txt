@@ -1,0 +1,47 @@
+From Adafruit_seesaw.h
+we have rotary encoders.
+
+  
+enum {
+...
+  SEESAW_ENCODER_BASE = 0x11,
+ ...
+};
+  
+  /** encoder module edge definitions
+ */
+enum {
+  SEESAW_ENCODER_STATUS = 0x00,
+  SEESAW_ENCODER_INTENSET = 0x10,
+  SEESAW_ENCODER_INTENCLR = 0x20,
+  SEESAW_ENCODER_POSITION = 0x30,
+  SEESAW_ENCODER_DELTA = 0x40,
+};
+
+
+  int32_t getEncoderPosition(uint8_t encoder = 0);
+  int32_t getEncoderDelta(uint8_t encoder = 0);
+  bool enableEncoderInterrupt(uint8_t encoder = 0);
+  bool disableEncoderInterrupt(uint8_t encoder = 0);
+  void setEncoderPosition(int32_t pos, uint8_t encoder = 0);
+
+where much of the code that these will be used with is  in python, smbus2 lib seems like a good option.
+
+from smbus2 import SMBus
+
+I2C_BUS = 1
+SEESAW_ADDR = 0x36  # addrs from 0x36 to 0x3D
+ENCODER_MODULE = 0x0E
+ENCODER_POSITION = 0x10
+
+with SMBus(I2C_BUS) as bus:
+    bus.write_i2c_block_data(SEESAW_ADDR, ENCODER_MODULE, [ENCODER_POSITION])
+    position_bytes = bus.read_i2c_block_data(SEESAW_ADDR, 0, 4)
+    position = int.from_bytes(position_bytes, byteorder='big', signed=True)
+    print(f"Encoder Position: {position}")
+
+https://learn.adafruit.com/adafruit-i2c-qt-rotary-encoder/pinouts
+There were errors in this document last time I looked, might have to swap SCA and SCL
+  oh snap, they fixed it!
+
+I built a thing for this, no idea where I put it though :(
