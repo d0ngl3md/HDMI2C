@@ -1,0 +1,1 @@
+draft: Kicad 9.0 schematic for HDMI-A female to female I2C tap
