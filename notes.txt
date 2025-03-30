@@ -26,7 +26,12 @@ it could be my own ignorance, but the enumeration of i2c devices is not automati
 a device responds to a probe if present. There are differnt means of probing, and various devices respond in different ways.
 need to look more at the quick-write functions which are for some devices, and other functional methods.
 
-################ I2C IS NOT HOT PLUG TECHNOLOGY ##################
+################ I2C IS NOT HOT PLUG TECHNOLOGY BUT HDMI IS ##################
+tried using HPD as a detectio method, but I think its more complex than HOD being high or low.
+maybe a kernel driver mod could report that. As is, you get the status of the connection for an enumerated 
+device. since my device is non enumerable, it says disconnected. maybe its not too complex to make an enumerable device?
+Then i could use HDMI hot plug events to detect the controlers with i2c devices....
+###############################################################################
 
 Ok so that is important, as it means we dont know when or where an i2c technology will attach to a system.
 it will respond to poling, (probably)  where, and when is a mystery. I2C is not event driven, there is no protocol 
