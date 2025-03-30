@@ -57,3 +57,6 @@ i2c-4
 
 for example. my laptop has busses 6,7 as the HDMI i2c busses. its sorta weird, that I have 2 or 3 hdmi devices listed on a system with 1 HDMI
 port. maybe its a CPU support thing. IDK.
+
+## It happend: the i2c bus numbers changed when I installed the NVidea kernel drivers.
+   still, its only 2 ports. so maybe on a system with a stable kernel/ setup, the busses dont change?
