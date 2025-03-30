@@ -20,6 +20,9 @@ await responses which define the device plugged in. its weird right. the hot plu
 SO IF I get an i2c memory device, and assign it address 0x50, I should be able to make my own hotplugable HDMI devices without 
 having to do a kernel module hack, or write a bunch of weird scripts to handle how the bus gets enumerated. 
 
+ok, and get-edid is a superiour tool for ID of bus devices with i2c memory IDs
+
+
 ################################### DERPS BELOW ##########################################
 
 
