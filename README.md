@@ -17,6 +17,6 @@ I had been messing with this on a display port to HDMI addapter, and could not g
 When I switched over to a straight throught HDMI, it worked instantly!
 <br>
 sudo apt-install python3-dev
-pip install spidev
+pip install smbus2
 
  
