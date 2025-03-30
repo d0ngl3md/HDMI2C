@@ -65,3 +65,11 @@ port. maybe its a CPU support thing. IDK.
 
 ## It happend: the i2c bus numbers changed when I installed the NVidea kernel drivers.
    still, its only 2 ports. so maybe on a system with a stable kernel/ setup, the busses dont change?
+############# On this idea of using HDMI hotplug detection and kernel drivers: ########################################
+Getting into this ugly gray area, of hardware detection, but what Im tring to do now is use CPU and GPU detection to read registers related to HPD.
+
+sudo apt install intel-gpu-tools
+
+system specific: x86_64 integrated intel graphics only: HPB status on register 0x6111C
+
+bleh, all this is ugly
