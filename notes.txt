@@ -12,7 +12,16 @@ Success!
 ################
 sudo apt install python3-dev
 
-############
+############ OK I Think i get it now! ###########
+the reffernce image here, https://blog.danman.eu/emulating-hdmi-connection/
+they reason this guy uses an eeprom is to enumerate the i2c device, which garners the plug detection (hot plug functionality )
+the EDID, on the i2c bus, is a memory device at address 0x50, which the kernel has a driver predefined to listen on, and 
+await responses which define the device plugged in. its weird right. the hot plug function is based on polling a non hot plug tech.
+SO IF I get an i2c memory device, and assign it address 0x50, I should be able to make my own hotplugable HDMI devices without 
+having to do a kernel module hack, or write a bunch of weird scripts to handle how the bus gets enumerated. 
+
+################################### DERPS BELOW ##########################################
+
 
 ok, been hitting this for a minute. got some issues. The constants are the device addresses, but on any given system, 
 the bus could differ, which means we're editing code every time we want to run a program on a different computer.
