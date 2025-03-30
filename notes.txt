@@ -9,3 +9,19 @@ pip install pyaudio
 
 Success!
 
+################
+sudo apt install python3-dev
+
+############
+
+ok, been hitting this for a minute. got some issues. The constants are the device addresses, but on any given system, 
+the bus could differ, which means we're editing code every time we want to run a program on a different computer.
+That is a pain in the butt.
+
+I tried writing a class library to take addresses, and return busses, but this isnt working properly yet. 
+Auto enumeration is the goal, or something close to that. 
+
+
+it could be my own ignorance, but the enumeration of i2c devices is not automatic on linux systems, its more like
+a device responds to a probe if present. There are differnt means of probing, and various devices respond in different ways.
+need to look more at the quick-write functions which are for some devices, and other functional methods.
