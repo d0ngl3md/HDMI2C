@@ -25,3 +25,35 @@ Auto enumeration is the goal, or something close to that.
 it could be my own ignorance, but the enumeration of i2c devices is not automatic on linux systems, its more like
 a device responds to a probe if present. There are differnt means of probing, and various devices respond in different ways.
 need to look more at the quick-write functions which are for some devices, and other functional methods.
+
+################ I2C IS NOT HOT PLUG TECHNOLOGY ##################
+
+Ok so that is important, as it means we dont know when or where an i2c technology will attach to a system.
+it will respond to poling, (probably)  where, and when is a mystery. I2C is not event driven, there is no protocol 
+level or electrical level detection, and no IRQs.
+
+So the goal is to make it less of a mystery. 
+
+What I might do is write a script that logs the system default, no attached devices.
+ so then what? when we're looking for devices on busses, maybe look at the log first?
+The full scan operation lenghth can vary alot. its like 77 addresses on N-buses.
+
+So... ah.. lets see, I think the HDMI I2C bus (though variant from computer to computer) is constant for any specific computers
+hardware. So HDMI is hot plugable, which means the device on video could be used to detect a device.
+
+Additionaly, we could do:
+
+$ ls /sys/class/drm/card0-HDMI-A-*
+
+which will give you bus assignments to the HDMI port.
+this might vary, on systems with graphics cards, or multiple HDMI ports.
+still it would tell you a more probable list of devices to search, rather than scanning all the i2c devices.
+might be able to make a more intelligent script too, once I see what a system breaking that logic would do.
+Else:
+$ ls /sys/class/drm/card0-HDMI-A-* | grep i2c-
+i2c-1
+i2c-2
+i2c-4
+
+for example. my laptop has busses 6,7 as the HDMI i2c busses. its sorta weird, that I have 2 or 3 hdmi devices listed on a system with 1 HDMI
+port. maybe its a CPU support thing. IDK.
