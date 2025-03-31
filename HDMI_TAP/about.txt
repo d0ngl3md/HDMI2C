@@ -1,1 +1,2 @@
 draft: Kicad 9.0 schematic for HDMI-A female to female I2C tap
+we can make this even better with edid via eeprom. thatway we can have hot plug detection, device id etc.
