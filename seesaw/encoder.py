@@ -14,7 +14,7 @@ second, memory, they can save the value of where they last were. ... for the ent
 might implement the buttons though I dont anticapte using them. 
 There is also an RGB neopixel on each encoder.
 """
-
+BYTES = 4
 I2C_BUS = 4        # Change if needed
 I2C_ADDR = 0x36
 I2C_ADDR2 = 0x37
@@ -51,10 +51,10 @@ if __name__ == "__main__":
     with SMBus(I2C_BUS) as bus:
         try:
             while True:
-                data1 = read_register(bus, I2C_ADDR, SEESAW_ENCODER_BASE, SEESAW_ENCODER_POSITION, I2C_BUS)
-                data2 = read_register(bus, I2C_ADDR2, SEESAW_ENCODER_BASE, SEESAW_ENCODER_POSITION, I2C_BUS)
+                data1 = read_register(bus, I2C_ADDR, SEESAW_ENCODER_BASE, SEESAW_ENCODER_POSITION, BYTES)
+                data2 = read_register(bus, I2C_ADDR2, SEESAW_ENCODER_BASE, SEESAW_ENCODER_POSITION, BYTES)
                 for addr in [I2C_ADDR, I2C_ADDR2]:
-                    data = read_register(bus, addr, SEESAW_ENCODER_BASE, SEESAW_ENCODER_POSITION, I2C_BUS)
+                    data = read_register(bus, addr, SEESAW_ENCODER_BASE, SEESAW_ENCODER_POSITION, BYTES)
                     pos = struct.unpack(">i", bytes(data))[0]
                     print(f"Encoder {addr:02X} Position: {pos}")
 
