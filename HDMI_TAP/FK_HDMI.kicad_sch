@@ -1816,7 +1816,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "HDMI_A"
+		(property "Value" "HDMI_A_Female"
 			(at 203.2 101.5999 0)
 			(effects
 				(font
@@ -2074,7 +2074,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "HDMI_A"
+		(property "Value" "HDMI_A_Male"
 			(at 99.06 101.5999 0)
 			(effects
 				(font
